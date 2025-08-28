@@ -14,7 +14,7 @@ export default function Routes() {
       <Stack.Navigator>
         {userData?.access_token?.token ? <>{MainStack(Stack)}</> : <>{AuthStack(Stack)}</>}
 
-        {/* {userData?.name ? <DrawerNavigation /> : <Navigation />} */}
+
       </Stack.Navigator>
     </NavigationContainer>
   );

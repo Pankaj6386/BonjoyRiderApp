@@ -15,8 +15,7 @@ const index = () => {
       <Provider store={store}>
         {/* <CustomStatusBar backgroundColor={Colors.White} /> */}
         <Routes />
-        {/* <Counter /> */}
-        {/* <Text style={{fontFamily: 'Manrope-Medium', fontSize: 25}}>index2</Text> */}
+       
       </Provider>
     </SafeAreaProvider>
   );

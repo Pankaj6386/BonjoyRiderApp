@@ -946,7 +946,7 @@ export const ArrowSVG = ({color}) => {
   return (
     <Svg
       width="17"
-      height="12"
+      height="17"
       viewBox="0 0 17 12"
       fill="none"
       xmlns="http://www.w3.org/2000/svg">

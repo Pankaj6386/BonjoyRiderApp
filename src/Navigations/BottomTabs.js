@@ -82,7 +82,7 @@ const BottomTabs = () => {
       />
       <Tab.Screen
         name={NavigationString.ApplicationScreen}
-        component={ApplicationStack}
+        component={HomeStack}
         options={{
           tabBarIcon: ({tintColor, size, focused}) => (
             <BottomPolicyIconSVG
@@ -94,7 +94,7 @@ const BottomTabs = () => {
       />
       <Tab.Screen
         name={NavigationString.PublicationScreen}
-        component={Publication}
+        component={HomeStack}
         options={{
           tabBarIcon: ({tintColor, size, focused}) => (
             <BottomPublicationsIconSVG
@@ -104,21 +104,10 @@ const BottomTabs = () => {
           ),
         }}
       />
-      <Tab.Screen
-        name={NavigationString.ChatsScreen}
-        component={Chat}
-        options={{
-          tabBarIcon: ({tintColor, size, focused}) => (
-            <BottomMessageIconSVG
-              circleColor={focused ? Colors.TealBlue : '#E5F2F3'}
-              pathColor={focused ? Colors.White : '#666666'}
-            />
-          ),
-        }}
-      />
+      
       <Tab.Screen
         name={NavigationString.ProfilesScreen}
-        component={ProfileStack}
+        component={HomeStack}
         options={{
           tabBarIcon: ({tintColor, size, focused}) => (
             <BottomProfileIconSVG

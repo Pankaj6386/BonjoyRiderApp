@@ -363,15 +363,18 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   heading: {
+    width:'70%',
+    marginTop:"5%",
     fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 10,
+    marginBottom: 20,
     color: "#000",
   },
   subText: {
     fontSize: 14,
     color: "#555",
     marginBottom: 30,
+    width:'85%',
   },
   inputContainer: {
     flexDirection: "row",

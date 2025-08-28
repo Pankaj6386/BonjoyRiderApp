@@ -393,8 +393,12 @@ import {
   StyleSheet,
   TextInput,
 } from "react-native";
+import { ArrowSVG } from "../../assets/svgIcons/Index";
+import { useDispatch } from "react-redux";
+import { saveUserData } from "../../store/slices/auth";
 
 const OtpScreen = ({navigation}) => {
+  const dispatch = useDispatch()
   const [otp, setOtp] = useState("");
 
   const handleKeyPress = (digit: string) => {
@@ -414,11 +418,19 @@ const OtpScreen = ({navigation}) => {
     </TouchableOpacity>
   );
 
+  const handleVerify=()=>{
+     dispatch(saveUserData({id:1,name:"raj",access_token:{token:'443545'}}));
+  }
   return (
     <View style={styles.container}>
       {/* Back Button */}
-      <TouchableOpacity style={styles.backButton}>
+      {/* <TouchableOpacity style={styles.backButton}>
         <Text style={{ fontSize: 20 }}>←</Text>
+      </TouchableOpacity> */}
+
+   <TouchableOpacity onPress={()=>navigation.goBack()} style={styles.backButton}>
+        {/* <Text style={{ fontSize: 20 }}>←</Text> */}
+        <ArrowSVG />
       </TouchableOpacity>
 
       {/* Heading */}
@@ -456,12 +468,12 @@ const OtpScreen = ({navigation}) => {
       </View>
 
       {/* Verify Button */}
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity onPress={()=>handleVerify()} style={styles.button}>
         <Text style={styles.buttonText}>Verify</Text>
       </TouchableOpacity>
 
       {/* Custom Keypad */}
-      {/* <View style={styles.keypad}>
+      <View style={styles.keypad}>
         <View style={styles.keyRow}>
           {renderKey("1", "1")}
           {renderKey("2", "2")}
@@ -478,12 +490,12 @@ const OtpScreen = ({navigation}) => {
           {renderKey("9", "9")}
         </View>
         <View style={styles.keyRow}>
-          <View style={styles.key} /> 
-        
+          {/* <View style={styles.key} />  */}
+        {renderKey("#", "#")}
           {renderKey("0", "0")}
           {renderKey("⌫", "back")}
         </View>
-      </View> */}
+      </View>
     </View>
   );
 };
@@ -500,6 +512,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   heading: {
+    marginTop:"5%",
     fontSize: 18,
     fontWeight: "bold",
     marginBottom: 20,
@@ -525,6 +538,9 @@ const styles = StyleSheet.create({
   clearBtn: {
     alignSelf: "flex-end",
     marginBottom: 20,
+    position:'absolute',
+    right:15,
+    top:'15%'
   },
   clearText: {
     fontSize: 20,
