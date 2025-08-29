@@ -1,32 +1,15 @@
-import React from 'react';
-import {StyleSheet} from 'react-native';
 import {
   BottomTabBar,
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
-import Colors from '../styles/Colors';
-import {responsiveHeight} from 'react-native-responsive-dimensions';
+import React from 'react';
+import { Image, Platform, StyleSheet } from 'react-native';
+import { responsiveHeight } from 'react-native-responsive-dimensions';
 
-import {
-  BottomHomeIconSVG,
-  BottomMessageIconSVG,
-  BottomPolicyIconSVG,
-  BottomProfileIconSVG,
-  BottomPublicationsIconSVG,
-} from '../assets/svgIcons/Index';
-import {
-  Chat,
-  Dashboard,
-  MYApplication,
-  Profile,
-  Publication,
-} from '../screens/Index';
-import NavigationString from './NavigationString';
-import {useSelector} from 'react-redux';
+import ImagePath from '../constant/ImagePath';
+import { useRouteNameContext } from '../context/RouteNameContext';
 import HomeStack from './HomeNavigation/Home';
-import {useRouteNameContext} from '../context/RouteNameContext';
-import ApplicationStack from './ApplicationNavigation/Application';
-import ProfileStack from './ProfileNavigation/ProfileStack';
+import NavigationString from './NavigationString';
 
 // Create Bottom Tab Navigator
 const Tab = createBottomTabNavigator();
@@ -35,8 +18,7 @@ const Tab = createBottomTabNavigator();
 const BottomTabs = () => {
   const hiddenRoutes = [NavigationString?.NotificationScreen];
   // const currentRouteName = useSelector(state => state.auth.hideBottomScreen);
-  const {currentRouteName} = useRouteNameContext();
-  console.log('currentRouteName---', currentRouteName);
+  const { currentRouteName } = useRouteNameContext();
 
   return (
     <Tab.Navigator
@@ -47,7 +29,8 @@ const BottomTabs = () => {
           state={{
             ...props.state,
             // routes: props.state.routes.slice(0, 4),
-          }}></BottomTabBar>
+          }}
+        ></BottomTabBar>
       )}
       tabBarOptions={{
         keyboardHidesTabBar: true,
@@ -59,23 +42,26 @@ const BottomTabs = () => {
         tabBarStyle: [
           {
             display: hiddenRoutes.includes(currentRouteName) ? 'none' : 'flex',
-            height: Platform.OS === 'android' ? 60 : responsiveHeight(9),
+            height: Platform.OS === 'android' ? 55 : responsiveHeight(9),
           },
         ],
         tabBarShowLabel: false, // Hide labels
         tabBarIconStyle: {
-          marginTop: Platform.OS === 'android' ? 0 : -5, // Adjust the margin to vertically center the icon
+          marginTop: Platform.OS === 'android' ? 8 : -5, // Adjust the margin to vertically center the icon
         },
-      }}>
+      }}
+    >
       <Tab.Screen
         name={NavigationString.HomeScreen}
         // component={Dashboard}
         component={HomeStack}
         options={{
-          tabBarIcon: ({tintColor, size, focused}) => (
-            <BottomHomeIconSVG
-              circleColor={focused ? Colors.TealBlue : '#E5F2F3'}
-              pathColor={focused ? Colors.White : '#666666'}
+          tabBarIcon: ({ tintColor, size, focused }) => (
+            <Image
+              source={ImagePath.homeIcon}
+              tintColor={focused ? '#34A853' : '#000000'}
+              
+              style={{ width: 25, height: 25, resizeMode: 'contain' }}
             />
           ),
         }}
@@ -84,10 +70,11 @@ const BottomTabs = () => {
         name={NavigationString.ApplicationScreen}
         component={HomeStack}
         options={{
-          tabBarIcon: ({tintColor, size, focused}) => (
-            <BottomPolicyIconSVG
-              circleColor={focused ? Colors.TealBlue : '#E5F2F3'}
-              pathColor={focused ? Colors.White : '#666666'}
+          tabBarIcon: ({ tintColor, size, focused }) => (
+            <Image
+              source={ImagePath.motorIcont}
+              tintColor={focused ? '#34A853' : '#000000'}
+              style={{ width: 25, height: 25, resizeMode: 'contain' }}
             />
           ),
         }}
@@ -96,23 +83,39 @@ const BottomTabs = () => {
         name={NavigationString.PublicationScreen}
         component={HomeStack}
         options={{
-          tabBarIcon: ({tintColor, size, focused}) => (
-            <BottomPublicationsIconSVG
-              circleColor={focused ? Colors.TealBlue : '#E5F2F3'}
-              pathColor={focused ? Colors.White : '#666666'}
+          tabBarIcon: ({ tintColor, size, focused }) => (
+            <Image
+              source={ImagePath.accountIcont}
+              tintColor={focused ? '#34A853' : '#000000'}
+              style={{width: 25, height: 25,resizeMode: 'contain' }}
             />
           ),
         }}
       />
-      
+
       <Tab.Screen
         name={NavigationString.ProfilesScreen}
         component={HomeStack}
         options={{
-          tabBarIcon: ({tintColor, size, focused}) => (
-            <BottomProfileIconSVG
-              circleColor={focused ? Colors.TealBlue : '#E5F2F3'}
-              pathColor={focused ? Colors.White : '#666666'}
+          tabBarIcon: ({ tintColor, size, focused }) => (
+            <Image
+              source={ImagePath.walletIcont}
+              tintColor={focused ? '#34A853' : '#000000'}
+              style={{ width: 25, height: 25, resizeMode: 'contain' }}
+            />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name={NavigationString.AboutUsScreen}
+        component={HomeStack}
+        options={{
+          tabBarIcon: ({ tintColor, size, focused }) => (
+            <Image
+              source={ImagePath.supportIcont}
+              tintColor={focused ? '#34A853' : '#000000'}
+              style={{width: 25, height: 25, resizeMode: 'contain' }}
             />
           ),
         }}

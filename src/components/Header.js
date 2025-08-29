@@ -27,9 +27,9 @@ const Header = ({
     <View
       style={{
         ...styles.container,
-        padding: arrowBack ? 25 : 18,
-        borderBottomLeftRadius: radius ? 20 : 0,
-        borderBottomRightRadius: radius ? 20 : 0,
+        // padding: arrowBack ? 25 : 18,
+        // borderBottomLeftRadius: radius ? 20 : 0,
+        // borderBottomRightRadius: radius ? 20 : 0,
       }}>
       {/* Menu Icon */}
       {arrowBack ? (
@@ -47,7 +47,7 @@ const Header = ({
       )}
 
       {/* Location Info */}
-      {arrowBack ? (
+      {/* {arrowBack ? (
         <View style={{...styles.locationContainer, marginLeft: 0}}>
           <TextView
             heading
@@ -80,7 +80,7 @@ const Header = ({
             22 RUE BERGERE, 75009
           </TextView>
         </View>
-      )}
+      )} */}
       {/* Icons Section */}
       {arrowBack ? (
         <View style={styles.iconGroup}>
@@ -105,22 +105,22 @@ const Header = ({
       ) : (
         <View style={styles.iconGroup}>
           {/* Location Icon */}
-          {title !== 'Publications' && (
+          {/* {title !== 'Publications' && (
             <TouchableOpacity style={styles.iconButton}>
               <LocationIconSVG />
             </TouchableOpacity>
-          )}
+          )} */}
 
           {/* Notification Icon */}
-          <TouchableOpacity
+          {/* <TouchableOpacity
             onPress={clickNotification}
             style={styles.iconButton}>
             <HeaderNotificationIconSVG />
-            {/* Notification Badge */}
+       
             <View style={styles.badge}>
               <Text style={styles.badgeText}>2</Text>
             </View>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       )}
     </View>
@@ -133,9 +133,10 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: Colors.TealBlue, // Adjust color to match the design
+    backgroundColor: Colors.White, // Adjust color to match the design
     padding: 14,
     paddingHorizontal: 15,
+    borderRadius:8
   },
   menuIcon: {
     marginRight: 10,

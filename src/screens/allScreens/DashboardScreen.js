@@ -481,18 +481,236 @@
 //   },
 // });
 
+import React, { useCallback, useState } from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  ScrollView,
+  StatusBar,
+  SafeAreaView,
+  Dimensions,
+  ImageBackground,
+  Image
+} from 'react-native';
+import { LocationIconSVG, LocationSVG, RightArrowSvg, SearchSVG } from '../../assets/svgIcons/Index';
+import Header from '../../components/Header';
 
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+const { width } = Dimensions.get('window');
 
-const DashboardScreen = () => {
+const DashboardScreen = ({navigation}) => {
+  const [searchText, setSearchText] = useState('');
+  
+  // Sample recent destinations data
+  const recentDestinations = [
+    {
+      id: 1,
+      address: '6CMJ+435, DB Mall Square',
+      area: 'Arera Colony, Bhopal'
+    },
+    {
+      id: 2,
+      address: '6CMJ+435, DB City Mall',
+      area: 'MP Nagar, Bhopal'
+    }
+  ];
+
+  const handleSideMunu = useCallback(() => {
+    // navigation.openDrawer();
+  },[]);
+
+
   return (
-    <View>
-      <Text>DashboardScreen</Text>
-    </View>
-  )
-}
+    <SafeAreaView style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+      
+    
 
-export default DashboardScreen
+      <ImageBackground
+        source={require('../../assets/images/road-location-map.jpeg')} // अपने project में image path adjust करें
+        resizeMode='cover'
+        style={styles.map}
+      >
+          {/* Header with time */}
+      <View style={styles.header}>
+      <Header onPress={handleSideMunu}  />
+     
+      </View>
+       
+      </ImageBackground>
 
-const styles = StyleSheet.create({})
+<ScrollView style={{ marginTop:-120,}}>
+      {/* Search Section */}
+      <View style={styles.searchSection}>
+        {/* <Text style={styles.sectionTitle}>Search Destination</Text> */}
+        
+        <View style={styles.searchContainer}>
+          {/* <Ionicons name="search" size={20} color="#666" style={styles.searchIcon} /> */}
+        <SearchSVG />
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Search Destination"
+            value={searchText}
+            onChangeText={setSearchText}
+            placeholderTextColor="#999"
+          />
+        </View>
+
+        {/* Recent Destinations */}
+        <View style={styles.recentDestinations}>
+          {recentDestinations.map((item) => (
+            <TouchableOpacity key={item.id} style={styles.destinationItem}>
+              <View style={styles.locationIcon}>
+                {/* <Ionicons name="location" size={16} color="#007AFF" /> */}
+                <LocationSVG />
+              </View>
+              <View style={styles.destinationInfo}>
+                <Text style={styles.destinationAddress}>{item.address}</Text>
+                {/* <Text style={styles.destinationArea}>{item.area}</Text> */}
+              </View>
+              <RightArrowSvg  color={'#34A853'}/>
+            </TouchableOpacity>
+          ))}
+        </View>
+      </View>
+
+      {/* Divider */}
+      <View style={styles.divider} />
+
+      {/* Marketing Agency Card */}
+      <View style={{marginHorizontal:20,marginBottom:50,marginTop:10,}}>
+      <Image source={require('../../assets/images/images.jpeg')}
+      resizeMode='contain'
+      style={{width:'100%',height:200,borderRadius:40}} />
+      </View>
+      {/* <View style={styles.marketingCard}>
+        <Text style={styles.marketingTitle}>Marketing Agency</Text>
+        <Text style={styles.marketingDescription}>
+          Digital marketing mastery: Elevate your online presence with our expert strategies
+        </Text>
+        
+        <TouchableOpacity style={styles.getStartedButton}>
+          <Text style={styles.getStartedText}>GET STARTED</Text>
+        </TouchableOpacity>
+      </View> */}
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#F5F5F5',
+  },
+  header: {
+    paddingHorizontal: 20,
+    paddingTop: 10,
+    paddingBottom: 5,
+  },
+  time: {
+    fontSize: 34,
+    fontWeight: '600',
+    color: '#000',
+  },
+  searchSection: {
+    // marginTop:-120,
+    padding: 20,
+    backgroundColor:"#fff",
+    marginHorizontal:20,
+    borderRadius:20,
+    borderWidth:1,
+    borderColor:"#000"
+  },
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#000',
+    marginBottom: 15,
+  },
+  searchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F2F2F7',
+    borderRadius: 10,
+    paddingHorizontal: 15,
+    height: 50,
+    // marginBottom: 20,
+  },
+  searchIcon: {
+    marginRight: 10,
+  },
+  searchInput: {
+    flex: 1,
+    fontSize: 16,
+    color: '#000',
+  },
+  recentDestinations: {
+    // marginTop: 10,
+  },
+  destinationItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: '#F2F2F7',
+  },
+  locationIcon: {
+    width: 30,
+    alignItems: 'center',
+  },
+  destinationInfo: {
+    flex: 1,
+  },
+  destinationAddress: {
+    fontSize: 16,
+    color: '#000',
+    marginBottom: 4,
+  },
+  destinationArea: {
+    fontSize: 14,
+    color: '#666',
+  },
+  divider: {
+    height: 1,
+    backgroundColor: '#E5E5EA',
+    marginVertical: 10,
+  },
+  marketingCard: {
+    backgroundColor: '#F8F9FA',
+    margin: 20,
+    padding: 20,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#E5E5EA',
+  },
+  marketingTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#000',
+    marginBottom: 10,
+  },
+  marketingDescription: {
+    fontSize: 14,
+    color: '#666',
+    lineHeight: 20,
+    marginBottom: 20,
+  },
+  getStartedButton: {
+    backgroundColor: '#007AFF',
+    paddingVertical: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  getStartedText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  map: { width: '100%', height: '70%' },
+  marker: { position: 'absolute', top: 50, left: 50 },
+});
+
+export default DashboardScreen;
