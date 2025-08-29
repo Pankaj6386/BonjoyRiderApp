@@ -108,25 +108,31 @@ const Splash = ({ navigation }) => {
 
       </ImageBackground> */}
 
-      <ImageBackground
-        source={ImagePath.backgroundImage}
-        style={styles.background}
-        resizeMode="contain"
-      >
-        {/* Logo */}
+{/* Logo */}
         <Image
           source={ImagePath.splashTopRight}
           style={styles.logo}
           resizeMode="contain"
         />
-      </ImageBackground>
+          <Image
+          source={ImagePath.backgroundImage}
+          style={styles.bike}
+          resizeMode="contain"
+        />
+      {/* <ImageBackground
+        source={ImagePath.backgroundImage}
+        style={styles.background}
+        resizeMode="contain"
+      >
+        
+      </ImageBackground> */}
 
       {/* App Title */}
-      {/* <Text style={styles.title}>BONJOY</Text> */}
+      <Text style={styles.title}>Welcome to BONJOY</Text>
 
       {/* Tagline */}
       <Text style={styles.tagline}>
-        Effortless, Eco-Friendly, {'\n'}Exhilarating – Bon Joy Awaits!
+        Effortless, Eco-Friendly, Exhilarating 
       </Text>
 
       {/* Continue Button */}
@@ -134,8 +140,10 @@ const Splash = ({ navigation }) => {
         onPress={() => navigation.navigate(NavigationString.LoginScreen)}
         style={styles.button}
       >
-        <Text style={styles.buttonText}>Continue with Phone Number</Text>
+        <Text style={styles.buttonText}>Continue</Text>
       </TouchableOpacity>
+ <Text style={styles.tagline}>Login with Phone Number</Text>
+
 
       {/* Footer Text */}
       <Text style={styles.footerText}>
@@ -168,29 +176,31 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
   },
-  background: {
+  bike: {
     // flex: 1,               // take full screen
     width: '100%',
-    height: '70%',
+    height: '40%',
     justifyContent: 'center', // center logo vertically
     alignItems: 'center', // center logo horizontally
-    top: 100,
+    // top: -20,
   },
   logo: {
-    width: 200,
-    height: 220,
+    marginTop:30,
+    width: 120,
+    height: 120,
     // bottom:70
   },
   title: {
+    marginTop:20,
     fontSize: 28,
     fontWeight: 'bold',
     color: '#2d2d2d',
-    marginBottom: 20,
+    marginBottom:10
   },
   tagline: {
     fontSize: 16,
     textAlign: 'center',
-    marginBottom: 40,
+    marginBottom: 20,
     color: '#333',
   },
   button: {
@@ -201,6 +211,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     width: '90%',
     alignItems: 'center',
+    marginTop:10
   },
   buttonText: {
     color: '#fff',

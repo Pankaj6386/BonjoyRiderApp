@@ -2,8 +2,8 @@ export default {
   /********************* Logo Image **********************/
   logo: require('../assets/images/logo/Group.png'),
   /********************* Splash Screen Image **********************/
-  splashTopRight: require('../assets/images/splashImages/TopRight/Logo_Name.png'),
-  backgroundImage:require('../assets/images/splashImages/TopRight/pngtreeimage.webp'),
+  splashTopRight: require('../assets/images/splashImages/TopRight/logo.png'),
+  backgroundImage:require('../assets/images/splashImages/TopRight/bike.png'),
   splash: require('../assets/images/splashImages/Center/SkypePicture.png'),
   splashBottomLeft: require('../assets/images/splashImages/BottomLeft/Group.png'),
 

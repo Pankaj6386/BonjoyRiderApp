@@ -581,8 +581,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   key: {
-    width: 70,
-    height: 70,
+    width: 60,
+    height: 60,
     borderWidth: 2,
     borderRadius: 15,
     borderColor: "#000",
